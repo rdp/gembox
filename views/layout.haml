@@ -20,15 +20,16 @@
       #stats
         .contained
           %p
-            You have
             =@stats[:num_versions]
             versions of
             =@stats[:num_gems]
             gems.
-            Your oldest gem is
+            Oldest gem is
             =link_to_gem(@stats[:oldest_gem])
-            from
             =ts(@stats[:oldest_gem].date)
+            Visit 
+            =link_to('core api', 'http://roger.doachristianturndaily.info/ruby_doc/doc_large_trunk_core/')
+            for the 1.9.2 core rdoc.
         
       #main.contained
         =yield
@@ -42,7 +43,7 @@
           = @environment
           mode.
         %p.copyright 
-          Hey! I'm 
+          Copyright (C) 2009 by original authors of each gem. Hey! I'm 
           =link_to 'open-source!', 'http://github.com/quirkey/gembox'
 
       :erb
