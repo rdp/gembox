@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<sinatra>, [">= 0.9.2"])
+      s.add_runtime_dependency(%q<RedCloth>, [">= 3.0.0"])
       s.add_runtime_dependency(%q<vegas>, [">= 0.0.1"])
       s.add_runtime_dependency(%q<haml>, [">= 2.0.9"])
       s.add_runtime_dependency(%q<activesupport>, [">= 2.2.2"])
