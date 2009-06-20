@@ -8,7 +8,7 @@
   %body
     #container
       #smallnav
-        .back_link=link_to_gem(@gem, :text => '&laquo Back to Gembox')
+        .back_link=link_to_gem(@gem, :text => '&laquo Back to Gembox ' + @gem.name)
         .viewing
           Viewing RDoc for 
           =@gem.name
