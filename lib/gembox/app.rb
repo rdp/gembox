@@ -80,7 +80,7 @@ module Gembox
       raise @gems.inspect if @gems.empty?
       @gem_versions = @gems[0][1]
       if version
-        @gems = Gembox::Gems.search(name, version)
+        @gems = Gembox::Gems.search(name, version, true)
         @gem  = @gems.shift[1].first if @gems
       end
       if !@gem

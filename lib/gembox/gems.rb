@@ -22,6 +22,7 @@ module Gembox
             for word in search_term.split('/\w') 
               passed &= combined_description.include?(word.downcase)
             end
+            passed &= spec.version == version if version
             passed
         }.map{|name, spec| spec}
         group_gems(gems)
