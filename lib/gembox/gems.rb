@@ -18,10 +18,11 @@ module Gembox
         regexp = strict ? /^#{escaped}$/ : /#{escaped}/
 	gems = source_index.select{|name, spec| 
             passed = true 
-            combined_description = (spec.full_name.to_s + ' ' + spec.description.to_s + ' ' + spec.summary.to_s).downcase
+            combined_description = (spec.full_name.to_s + ' ' + ' ' + spec.summary.to_s).downcase
             for word in search_term.split('/\w') 
               passed &= combined_description.include?(word.downcase)
             end
+            passed &= spec.version == version if version
             passed
         }.map{|name, spec| spec}
         group_gems(gems)
