@@ -16,7 +16,11 @@ module Gembox
         version = version ? Gem::Requirement.create(version) : Gem::Requirement.default
         escaped = Regexp.escape(search_term)
         regexp = strict ? /^#{escaped}$/ : /#{escaped}/
-	gems = source_index.select{|name, spec| 
+        if strict
+          gems = source_index.search Gem::Dependency.new(regexp, version)
+        else
+ 
+	  gems = source_index.select{|name, spec| 
             passed = true 
             combined_description = (spec.full_name.to_s + ' ' + ' ' + spec.summary.to_s).downcase
             for word in search_term.split('/\w') 
@@ -24,7 +28,8 @@ module Gembox
             end
             # doesn't work for some reason passed &= spec.version == version if version
             passed
-        }.map{|name, spec| spec}
+          }.map{|name, spec| spec}
+        end
         group_gems(gems)
       end
       
