@@ -23,7 +23,7 @@ module Gembox
 	  gems = source_index.select{|name, spec| 
             passed = true 
             combined_description = (spec.full_name.to_s + ' ' + ' ' + spec.summary.to_s).downcase
-            for word in search_term.split('/\w') 
+            for word in search_term.split(/\W/) # split into words
               passed &= combined_description.include?(word.downcase)
             end
             # doesn't work for some reason passed &= spec.version == version if version
