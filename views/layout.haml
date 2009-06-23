@@ -26,10 +26,13 @@
             gems.
             Oldest gem is
             =link_to_gem(@stats[:oldest_gem])
-            =ts(@stats[:oldest_gem].date)
+            =ts(@stats[:oldest_gem].date) + '.'
+          %p
             Visit 
-            =link_to('core api', 'http://ruby-doc.faithpromotingstories.org')
-            for core docs.
+            =link_to('here', 'http://coredocs.faithpromotingstories.org')
+            for core docs and
+            =link_to('here', 'http://wiki.github.com/rogerdpack/all_gems_rdocs/suggestions')
+            for suggestions.
         
       #main.contained
         =yield
