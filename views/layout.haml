@@ -27,14 +27,10 @@
             Oldest gem is
             =link_to_gem(@stats[:oldest_gem])
             =ts(@stats[:oldest_gem].date) + '.'
-          %p
-            Visit 
-            =link_to('here', 'http://coredocs.faithpromotingstories.org')
-            for core docs,
-            =link_to('here', 'http://wiki.github.com/rogerdpack/all_gems_rdocs/suggestions')
-            for suggestions, and
-            =link_to('here', 'http://wiki.github.com/rogerdpack/all_gems_rdocs/useful-links')
-            for similar sites.
+            See also 
+            =link_to('core docs', 'http://coredocs.faithpromotingstories.org') + ','
+            =link_to('leave suggestions', 'http://wiki.github.com/rogerdpack/all_gems_rdocs/suggestions') + ','
+            =link_to('links to similar sites', 'http://wiki.github.com/rogerdpack/all_gems_rdocs/useful-links') + '.'
         
       #main.contained
         =yield
