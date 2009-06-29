@@ -36,8 +36,9 @@ module Gembox
       def stats
         num_versions = source_index.length
         num_gems     = local_gems.length
-        oldest_gem   = source_index.min {|a,b| a[1].date <=> b[1].date }.last
-        {:num_versions => num_versions, :num_gems => num_gems, :oldest_gem => oldest_gem}
+        oldest_gem    = source_index.min {|a,b| a[1].date <=> b[1].date }.last
+        youngest_gem   = source_index.max {|a,b| a[1].date <=> b[1].date }.last
+{:num_versions => num_versions, :num_gems => num_gems, :oldest_gem => oldest_gem, :youngest_gem => youngest_gem}
       end
       
       protected
