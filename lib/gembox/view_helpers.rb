@@ -1,3 +1,5 @@
+require 'rdoc/markup/to_html'
+
 module Gembox
   module ViewHelpers
     
