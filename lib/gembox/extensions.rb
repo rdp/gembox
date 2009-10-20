@@ -20,7 +20,7 @@ module Gem
     
     alias :has_rdoc_checked? :has_rdoc?
     def has_rdoc?
-      has_rdoc_checked? && File.exists?(rdoc_path)
+      File.exists?(rdoc_path) # ignore whether it's checked or not--though in reality this is ignored by rubygems anyway...
     end
     
     def rdoc_path
