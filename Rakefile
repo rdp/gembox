@@ -1,4 +1,4 @@
-%w[rubygems rake rake/clean fileutils newgem rubigen jeweler].each { |f| require f }
+%w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
 require File.dirname(__FILE__) + '/lib/gembox'
 
 # Generate all the Rake tasks
@@ -13,8 +13,9 @@ $hoe = Hoe.new('gembox', Gembox::VERSION) do |p|
   p.url = ['http://code.quirkey.com/gembox', 'http://github.com/quirkey/gembox']
   p.extra_deps = [
    ['sinatra', '>=0.9.2'],
-   ['vegas', '>=0.0.1'],
+   ['vegas', '>=0.1.0'],
    ['haml', '>=2.0.9'],
+   ['rdoc', '=2.4.3'],
    ['activesupport', '>=2.2.2'],
    ['mislav-will_paginate', '>=2.3.7']
   ]
