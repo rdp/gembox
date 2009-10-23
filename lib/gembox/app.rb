@@ -30,7 +30,7 @@ module Gembox
     get '/next' do
      # requires a restart to reset...
      $b ||= do_install_or_server('--just-list').to_a
-     $b.pop
+     $b.pop.inspect
     end
 
     
