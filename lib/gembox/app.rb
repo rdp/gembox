@@ -25,6 +25,14 @@ module Gembox
     get '/' do
       redirect '/gems'
     end
+
+    $b = nil
+    get '/next' do
+     # requires a restart to reset...
+     $b ||= do_install_or_server('--just-list').to_a
+     $b.pop
+    end
+
     
     get %r{/gems/doc/([\w\-\_]+)/?([\d\.]+)?/?(.*)?} do
       load_gem_by_version
