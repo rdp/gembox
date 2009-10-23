@@ -27,16 +27,14 @@ module Gembox
     end
     
     get %r{/gems/doc/([\w\-\_]+)/?([\d\.]+)?/?(.*)?} do
+      load_gem_by_version
+      @rdoc_path = @gem.rdoc_path
       if params[:captures].length == 3 && !params[:captures][2].blank? 
         # we have a path
-        load_gem_by_version
-        @rdoc_path = File.join(@gem.installation_path, "doc", @gem.full_name, 'rdoc')
         full_path = File.join(@rdoc_path, params[:captures].pop)
         content_type File.extname(full_path)
         File.read(full_path)
       else
-        load_gem_by_version
-        @rdoc_path = File.join(@gem.installation_path, "doc", @gem.full_name, 'rdoc')        
         haml :doc, :layout => false
       end
     end
@@ -63,7 +61,11 @@ module Gembox
       show_layout = params[:layout] != 'false'
       @show_as = params[:as] || 'columns'
       if @search = params[:search]
-        @gems = Gembox::Gems.search(@search).paginate :page => params[:page] 
+        @gems = Gembox::Gems.search(@search).paginate :page => params[:page]
+        if !@gems.empty? && gem = @gems.find {|k,v| k.strip == @search.strip }
+          gem = gem[1][0]
+          redirect "/gems/#{gem.name}/#{gem.version}" and return
+        end
       end
       haml "gems_#{@show_as}".to_sym, :layout => show_layout
     end

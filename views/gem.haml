@@ -3,7 +3,8 @@
     =@gem.name
     %span.version=@gem.version
   - if @gem.description
-    =RDoc::Markup::ToHtml.new.convert(@gem.description).gsub("h2>", "h4>")
+    .description
+      =rdocify @gem.description
   .meta
     %p.authors
       By 
